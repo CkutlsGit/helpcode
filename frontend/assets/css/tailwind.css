@@ -7,9 +7,19 @@
 }
 
 @layer components {
-
+    .main-bg {
+        @apply bg-[url('~/assets/img/home-bg.jpg')] bg-no-repeat bg-cover bg-center min-h-[45rem] max-h-[45rem] relative -top-40 z-10 after:content-[''] after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:bg-[url('~/assets/img/home-bg.jpg')] after:bg-no-repeat after:bg-cover after:bg-center after:brightness-50 after:-z-10
+    }
+    .header-animation-text {
+        @apply hover:text-gray-400 ease-in duration-300
+    }
 }
 
 @layer utilities {
-
+    .font-roboto {
+        font-family: "Roboto", sans-serif;
+    }
+    .font-rubik {
+        font-family: "Rubik", sans-serif;
+    }
 }
