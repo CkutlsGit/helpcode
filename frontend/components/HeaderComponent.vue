@@ -8,7 +8,7 @@
       </div>
       <div class="header__nav text-2xl max-sm:mt-4 max-sm:text-lg">
         <nav>
-          <NuxtLink to="/" class="mx-4 header-animation-text default-animation">О нас</NuxtLink>
+          <NuxtLink to="/about" class="mx-4 header-animation-text default-animation">О нас</NuxtLink>
           <NuxtLink to="/" class="mx-4 header-animation-text default-animation">Форум</NuxtLink>
         </nav>
       </div>
