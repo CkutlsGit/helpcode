@@ -1,17 +1,7 @@
 <template>
   <section class="user-action bg-gray-400 w-full h-screen">
     <div class="user-action__content relative top-1/4 left-1/2 -translate-x-1/2 z-20 bg-gray-500 min-w-96 max-w-96 min-h-96 max-h-96 rounded-lg max-sm:max-w-72 max-sm:min-w-72">
-      <h1 class="text-center text-white text-xl font-roboto font-bold pt-6 mb-6">
-        <slot name="name"></slot>
-      </h1>
-      <div class="user-action__inputs flex flex-col gap-y-3 w-64 mx-auto items-center">
-        <input class="border-gray-400 border-2 bg-gray-300 text-white font-bold p-2" type="text" placeholder="Введите логин">
-        <input class="border-gray-400 border-2 bg-gray-300 text-white font-bold p-2" :type="`${ typeInput }`" placeholder="Введите пароль">
-        <slot name="confirm-password"></slot>
-        <button class="mt-6 py-2 bg-gray-300 rounded-2xl text-white font-bold hover:bg-gray-700 default-animation">
-          <slot name="name-action"></slot>
-        </button>
-      </div>
+      <slot/>
     </div>
   </section>
   <div class="circles-area" >
@@ -31,7 +21,6 @@
 </template>
 
 <script setup>
-  const typeInput = 'password'
 </script>
 
 <style scoped>
