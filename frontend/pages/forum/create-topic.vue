@@ -17,6 +17,11 @@
   })
 
 
+  const { $bus } = useNuxtApp()
+
+  onMounted(() => {
+    $bus.emit('changedValueBtn')
+  })
 </script>
 
 <style scoped>
