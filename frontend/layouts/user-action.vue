@@ -2,7 +2,7 @@
   <section class="user-action bg-gray-400 w-full h-screen">
     <div class="user-action__content relative top-1/4 left-1/2 -translate-x-1/2 z-20 bg-gray-500 min-w-96 max-w-96 min-h-96 max-h-96 rounded-lg max-sm:max-w-72 max-sm:min-w-72">
       <NuxtLink to="/">
-        <h1 class="text-center text-white font-rubik font-bold pt-6 text-lg hover:text-gray-400 default-animation">Helpcode.hub</h1>
+        <h1 class="text-center text-white text-lg font-rubik font-bold pt-6 hover:text-gray-400 default-animation">Helpcode.hub</h1>
       </NuxtLink>
       <slot/>
     </div>
