@@ -5,7 +5,7 @@
         <h1 class="font-bold">Форум для оказания помощи связанной с Программированием</h1>
         <p class="mt-4">Помощь по любому вопросу от наших пользователей</p>
         <div class="main-text__button mt-12">
-          <NuxtLink to="/" class="bg-orange-200 p-6 rounded-lg hover:text-gray-300 hover:bg-orange-400 default-animation max-sm:p-4 max-sm:text-xl">Перейти на форум</NuxtLink>
+          <NuxtLink to="/forum" class="bg-orange-200 p-6 rounded-lg hover:text-gray-300 hover:bg-orange-400 default-animation max-sm:p-4 max-sm:text-xl">Перейти на форум</NuxtLink>
         </div>
       </div>
     </div>
