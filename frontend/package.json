@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "axios": "^1.6.8",
     "nuxt": "^3.11.2",
     "nuxt-bus": "^0.9.3",
     "vue": "^3.4.21",
