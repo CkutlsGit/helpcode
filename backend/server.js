@@ -57,6 +57,29 @@ app.post('/api/register', async (req, res) => {
     })
 })
 
+app.get('/api/auth', (req, res) => {
+    const { username, password } = req.body
+
+    if (!username || !password) {
+        return res.status(400).json({ error: 'Ошибка в логине или с паролем' })
+    }
+
+    db.db.get('SELECT * FROM users WHERE username = ?', [username], (err, row) => {
+        if (err) {
+            return res.status(500).json({ error: 'Ошибка при проверке пользователя.' })
+        }
+        if (!row) {
+            return res.status(404).json({ error: 'Пользователь не найден.' })
+        }
+
+        if (row.password !== password) {
+            return res.status(401).json({ error: 'Неверный пароль.' })
+        }
+
+        res.status(200).json({ message: 'Авторизация успешна.' })
+    })
+})
+
 app.listen(port, () => {
     console.log(`http://localhost:${port}`)
 })
