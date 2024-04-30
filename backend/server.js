@@ -57,7 +57,7 @@ app.post('/api/register', async (req, res) => {
     })
 })
 
-app.get('/api/auth', (req, res) => {
+app.post('/api/auth', (req, res) => {
     const { username, password } = req.body
 
     if (!username || !password) {
