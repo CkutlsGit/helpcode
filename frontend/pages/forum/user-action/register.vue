@@ -21,11 +21,22 @@
 
   async function registerUser() {
     if (username.value !== '' && password.value !== '' && password.value.length >= 6) {
-      const data = $fetch('/api/frontend-action/user-action/register', {
-        method: 'POST',
-        body: { username: username.value, password: password.value }
-      })
-      console.log(data)
+      try {
+        const response = await $fetch('/api/frontend-action/user-action/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username: username.value, password: password.value })
+        })
+
+        if (response.message === 'Пользователь успешно зарегистрирован.') {
+          await navigateTo('/forum/user-action/auth')
+        }
+      }
+      catch (error) {
+        console.error(error)
+      }
     }
     else if (password.value.length < 6) {
       console.log('Меньше шести')
