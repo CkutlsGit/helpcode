@@ -33,11 +33,13 @@
           body: JSON.stringify({ username: username.value, password: password.value })
         })
 
+        if (response.message === 'Авторизация успешна.') {
+          await navigateTo('/forum')
+        }
         if (response.error) {
           console.log(response.error)
           errorMsg.value = response.error
         }
-        console.log(response)
       }
       catch (error) {
         console.error(error)
