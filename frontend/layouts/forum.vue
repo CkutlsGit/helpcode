@@ -22,12 +22,15 @@
 </template>
 
 <script setup>
-  const user = ''
+  const user = ref('')
   const notCreatePage = ref(true)
 
   const { $bus } = useNuxtApp()
 
   onMounted(() => {
+    if (getCookie('user')) {
+      user.value = getCookie('user')
+    }
     $bus.on('changedValueBtn', () => {
       notCreatePage.value = false
     })

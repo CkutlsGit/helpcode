@@ -34,6 +34,7 @@
         })
 
         if (response.message === 'Авторизация успешна.') {
+          setCookie('user', username.value)
           await navigateTo('/forum')
         }
         if (response.error) {
