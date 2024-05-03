@@ -8,6 +8,7 @@
     <button @click="registerUser" class="mt-6 py-2 px-12 bg-gray-300 rounded-lg text-white text-xl font-bold hover:bg-gray-700 default-animation">
       Зарегистрироваться
     </button>
+    <h2 v-if="errorMsg" class="text-red-400 text-center text-xs font-bold">{{ errorMsg }}</h2>
   </div>
 </template>
 
@@ -18,6 +19,8 @@
 
   const username = ref('')
   const password = ref('')
+
+  const errorMsg = ref('')
 
   async function registerUser() {
     if (username.value !== '' && password.value !== '' && password.value.length >= 6) {
@@ -33,9 +36,13 @@
         if (response.message === 'Пользователь успешно зарегистрирован.') {
           await navigateTo('/forum/user-action/auth')
         }
+        if (response.error) {
+          console.log(response.error)
+          errorMsg.value = response.error
+        }
       }
       catch (error) {
-        console.error(error)
+        console.log(error)
       }
     }
     else if (password.value.length < 6) {
