@@ -36,11 +36,11 @@ app.post('/api/register', async (req, res) => {
 
     if (!username || !password) {
         console.log('Ошибка в логине или с паролем')
-        return res.status(400).json({ error: 'Ошибка в логине или с паролем' })
+        return res.status(406).json({ error: 'Ошибка в логине или с паролем' })
     }
     if (password.length < 6) {
         console.log('Пароль должен быть больше 6 символов')
-        return res.status(400).json({ error: 'Пароль должен быть больше 6 символов' })
+        return res.status(406).json({ error: 'Пароль должен быть больше 6 символов' })
     }
 
     db.db.get('SELECT * FROM users WHERE username = ?', [username], (err, row) => {
@@ -50,7 +50,7 @@ app.post('/api/register', async (req, res) => {
         }
         if (row) {
             console.log('Логин должен быть уникальным! Текущий логин занят.')
-            return res.status(400).json({ error: 'Логин должен быть уникальным! Текущий логин занят.' })
+            return res.status(409).json({ error: 'Логин должен быть уникальным! Текущий логин занят.' })
         }
 
         db.db.run('INSERT INTO users (username, password) VALUES (?, ?)', [username, password], (err) => {
@@ -69,7 +69,7 @@ app.post('/api/auth', (req, res) => {
 
     if (!username || !password) {
         console.log('Ошибка в логине или с паролем')
-        return res.status(400).json({ error: 'Ошибка в логине или с паролем' })
+        return res.status(406).json({ error: 'Ошибка в логине или с паролем' })
     }
 
     db.db.get('SELECT * FROM users WHERE username = ?', [username], (err, row) => {
