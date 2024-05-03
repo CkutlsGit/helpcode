@@ -12,8 +12,7 @@ export default defineEventHandler( async (event) => {
             responseRequest = response.data
         })
         .catch(error => {
-            console.error(error)
-            responseRequest = error
+            responseRequest = error.response.data
         })
 
     return responseRequest

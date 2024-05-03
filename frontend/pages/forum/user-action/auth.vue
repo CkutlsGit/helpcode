@@ -8,6 +8,7 @@
     <button @click="authUser" class="mt-6 py-2 px-12 bg-gray-300 rounded-lg text-white text-xl font-bold hover:bg-gray-700 default-animation">
       Войти
     </button>
+    <h2 v-if="errorMsg" class="text-red-400 text-center text-xs font-bold">{{ errorMsg }}</h2>
   </div>
 </template>
 
@@ -18,6 +19,8 @@
 
   const username = ref('')
   const password = ref('')
+
+  const errorMsg = ref('')
 
   async function authUser() {
     if (username.value !== '' && password.value !== '') {
@@ -30,6 +33,10 @@
           body: JSON.stringify({ username: username.value, password: password.value })
         })
 
+        if (response.error) {
+          console.log(response.error)
+          errorMsg.value = response.error
+        }
         console.log(response)
       }
       catch (error) {
