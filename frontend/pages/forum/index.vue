@@ -26,12 +26,25 @@
   let forumTopics = reactive([])
   const { $bus } = useNuxtApp()
 
-  onMounted(() => {
-    $bus.on('sendForumTopics', (data) => {
-      forumTopics = data
-      statusGetForumTopics.value = true
-      console.log(forumTopics)
+  async function sendRequesttoGetForumTopics () {
+    const response = await $fetch('/api/frontend-action/forum-action/get-all-forum-topics', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
     })
+    console.log(response)
+    forumTopics = response
+    statusGetForumTopics.value = true
+  }
+
+  onMounted(() => {
+    try {
+      sendRequesttoGetForumTopics()
+    }
+    catch (error) {
+      console.error(error)
+    }
   })
   function shorterString(string) {
     if (string.length > 35) {

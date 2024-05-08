@@ -32,17 +32,6 @@
 
   const { $bus } = useNuxtApp()
 
-  async function sendRequesttoGetForumTopics () {
-    const response = await $fetch('/api/frontend-action/forum-action/get-all-forum-topics', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    })
-    console.log(response)
-    $bus.emit('sendForumTopics', response)
-  }
-
   onMounted(() => {
     if (getCookie('user')) {
       user.value = getCookie('user')
@@ -54,13 +43,6 @@
     $bus.on('changedValueBtn', () => {
       notCreatePage.value = false
     })
-
-    try {
-      sendRequesttoGetForumTopics()
-    }
-    catch (error) {
-      console.error(error)
-    }
   })
 
   async function exitAccount() {
