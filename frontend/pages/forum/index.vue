@@ -3,7 +3,7 @@
     <div class="forum-topics__content">
       <ul v-if="statusGetForumTopics">
         <li class="mt-4" v-for="(topic, index) in forumTopics.topics" :key="index">
-          <NuxtLink :to="`forum/topic/${ getPathForumTopic(topic.title, topic.date, topic.author) }`">
+          <NuxtLink :to="`forum/topic/${ topic.id }`">
             <h2 class="font-semibold mb-1">{{ shorterString(topic.title) }}</h2>
             <p class="font-medium mb-2">{{ shorterString(topic.description) }}</p>
             <div class="topic-info flex gap-4 font-bold text-gray-400">
@@ -51,12 +51,6 @@
       return string.substring(0, 35) + '...'
     }
     return string
-  }
-  function getPathForumTopic (title, date, author) {
-    if (title.length > 35) {
-      return title.substring(0, 35) + date + author
-    }
-    return title + date + author
   }
 </script>
 

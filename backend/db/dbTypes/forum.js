@@ -9,7 +9,8 @@ export class ForumDB {
             author TEXT,
             title TEXT,
             description TEXT,
-            date TEXT
+            date TEXT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT
         )
         `)
     }
