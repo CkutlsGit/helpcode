@@ -92,7 +92,7 @@ app.post('/api/auth', (req, res) => {
     })
 })
 
-app.post('api/forum/create-topic', (req, res) => {
+app.post('/api/forum/create-topic', (req, res) => {
     const { author, title, description, date } = req.body
 
     if (!author || !title || !description || !date) {
