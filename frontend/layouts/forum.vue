@@ -40,6 +40,7 @@
       },
     })
     console.log(response)
+    $bus.emit('sendForumTopics', response)
   }
 
   onMounted(() => {
