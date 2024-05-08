@@ -1,6 +1,5 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import { db } from './db/index.js'
 import userRouter from "./routes/userRouter.js";
 import forumRouter from "./routes/forumRouter.js";
 
