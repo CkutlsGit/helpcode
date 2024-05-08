@@ -15,6 +15,7 @@
               <NuxtLink class="hover:text-blue-400 font-bold default-animation" to="/forum/user-action/auth">Войти</NuxtLink> или <NuxtLink class="hover:text-red-400 font-bold default-animation" to="/forum/user-action/register">Зарегистрироваться</NuxtLink>
             </h2>
             <h2 class="mt-2" v-else>Вы вошли как <strong>{{ user }}</strong></h2>
+            <button v-if="user !== ''" @click="exitAccount" class="bg-gray-500 py-2 px-6 rounded-lg text-white hover:bg-gray-300 default-animation">Выйти</button>
           </div>
         </div>
         <slot/>
@@ -43,6 +44,11 @@
       notCreatePage.value = false
     })
   })
+
+  async function exitAccount() {
+    deleteCookie('user')
+    await navigateTo('/')
+  }
 </script>
 
 <style scoped>
