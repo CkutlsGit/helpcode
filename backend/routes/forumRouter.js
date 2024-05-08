@@ -31,14 +31,14 @@ router.post('/api/forum/create-topic', (req, res) => {
     })
 })
 
-router.post('/api/forum/get-forum-topics', (req, res) => {
-    db.db.all('SELECT * FROM forums', (err, row) => {
+router.get('/api/forum/get-all-forum-topics', (req, res) => {
+    db.db.all('SELECT * FROM forums', (err, rows) => {
         if (err) {
             console.error('Ошибка при получении форум-топиков.')
             return res.status(500).json({ error: 'Ошибка при получении форум-топиков.' })
         }
-        console.log('Успешно переданны все топики!')
-        res.status(201).json({ data: row })
+        console.log('Успешно переданы все темы форума!')
+        res.status(200).json({ topics: rows })
     })
 })
 
