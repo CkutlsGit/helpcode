@@ -42,4 +42,22 @@ router.get('/api/forum/get-all-forum-topics', (req, res) => {
     })
 })
 
+router.post('/api/forum/get-forum-topic-by-id', (req, res) => {
+    const { id } = req.body
+
+    if (!id) {
+        console.log('Ошибка с получением ID форум-топика.')
+        return res.status(406).json({ error: 'Ошибка при получении ID форум-топика.' })
+    }
+
+    db.db.get('SELECT * FROM forums WHERE id = ?', [id], (err, row) => {
+        if (err) {
+            console.error('Ошибка при получении форум-топика по ID.')
+            return res.status(500).json({ error: 'Ошибка при получении данных форум-топика.' })
+        }
+        console.log('Успешно передача форум-топика.')
+        res.status(200).json({ topic: row })
+    })
+})
+
 export default router
