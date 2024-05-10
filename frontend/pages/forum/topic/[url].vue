@@ -12,21 +12,6 @@
         </div>
       </div>
     </div>
-    <div class="forum-topic__comments">
-      <div class="forum-topic__comments-content max-h-24 overflow-y-auto">
-        <div class="comment">
-          <h2 class="font-bold mb-2">Author name</h2>
-          <p class="font-semibold -mb-1">Author description</p>
-          <div class="comment-data">
-            <h3 class="text-sm">Date comment</h3>
-          </div>
-        </div>
-      </div>
-      <div class="forum-topic__comments-input mt-6">
-        <input class="border-gray-400 border-2" type="text">
-
-      </div>
-    </div>
   </div>
 </template>
 
